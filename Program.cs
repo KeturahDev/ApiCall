@@ -3,17 +3,36 @@ using System.Threading.Tasks;
 using RestSharp;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 
-namespace ApiTest
+
+namespace ConsoleApiCall
 {
+  public class Article
+    {
+        public string Section { get; set; }
+        public string Title { get; set; }
+        public string Abstract { get; set; }
+        public string Url { get; set; }
+        public string Byline { get; set; }
+    }
   class Program
   {
     static void Main()
     {
-      var apiCallTask = ApiHelper.ApiCall("[KEY]");
+      var apiCallTask = ApiHelper.ApiCall("[APIKEY]");
       var result = apiCallTask.Result;
       JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
-      Console.WriteLine(jsonResponse["results"]);
+      List<Article> articleList = JsonConvert.DeserializeObject<List<Article>>(jsonResponse["results"].ToString());
+
+        foreach (Article article in articleList)
+        {
+          Console.WriteLine($"Section: {article.Section}");
+          Console.WriteLine($"Title: {article.Title}");
+          Console.WriteLine($"Abstract: {article.Abstract}");
+          Console.WriteLine($"Url: {article.Url}");
+          Console.WriteLine($"Byline: {article.Byline}");
+        }
     }
   }
 
