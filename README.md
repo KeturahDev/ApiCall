@@ -19,20 +19,17 @@ Download the .zip file and extract all files into directory of your choice OR cl
 
 1. Clone the repository:
     ```
-    git clone https://github.com/KeturahDev/HairSalon.Solution.git
+    git clone https://github.com/KeturahDev/ApiCall.git
     ```
-2. Change directories into the project working directory:
-    ```
-    cd HairSalon.Solution/HairSalon
-    ```
-3. Restore all dependencies:
+
+2. Restore all dependencies:
     ```
     dotnet restore
     ```
 
 ### Open program
 
-4. Compile and Run code:
+3. Compile and Run code:
     ```
     dotnet build
     dotnet run
